@@ -1,5 +1,6 @@
 <template>
   <div id="wrapper">
+<v-parallax src="https://cdn.vuetifyjs.com/images/parallax/material.jpg"></v-parallax>
     <img id="logo" src="~@/assets/logo.png" alt="electron-vue">
     <main>
       <div class="left-side">

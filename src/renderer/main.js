@@ -1,5 +1,8 @@
 import Vue from 'vue'
+import vuetify from '@/plugins/vuetify' // path to vuetify export
+
 import axios from 'axios'
+
 
 import App from './App'
 import router from './router'
@@ -11,6 +14,7 @@ Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
+  vuetify,
   components: { App },
   router,
   store,

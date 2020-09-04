@@ -10,41 +10,61 @@ const MinifyPlugin = require("babel-minify-webpack-plugin")
 
 let mainConfig = {
   entry: {
-    main: path.join(__dirname, '../src/main/index.js')
+    main: path.join(__dirname, "../src/main/index.js"),
   },
-  externals: [
-    ...Object.keys(dependencies || {})
-  ],
+  externals: [...Object.keys(dependencies || {})],
   module: {
     rules: [
       {
         test: /\.js$/,
-        use: 'babel-loader',
-        exclude: /node_modules/
+        use: "babel-loader",
+        exclude: /node_modules/,
       },
       {
         test: /\.node$/,
-        use: 'node-loader'
-      }
-    ]
+        use: "node-loader",
+      },
+      {
+        test: /\.s(c|a)ss$/,
+        use: [
+          "vue-style-loader",
+          "css-loader",
+          {
+            loader: "sass-loader",
+            // Requires sass-loader@^7.0.0
+            options: {
+              implementation: require("sass"),
+              fiber: require("fibers"),
+              indentedSyntax: true, // optional
+            },
+            // Requires sass-loader@^8.0.0
+            options: {
+              implementation: require("sass"),
+              sassOptions: {
+                fiber: require("fibers"),
+                indentedSyntax: true, // optional
+              },
+            },
+          },
+        ],
+      },
+    ],
   },
   node: {
-    __dirname: process.env.NODE_ENV !== 'production',
-    __filename: process.env.NODE_ENV !== 'production'
+    __dirname: process.env.NODE_ENV !== "production",
+    __filename: process.env.NODE_ENV !== "production",
   },
   output: {
-    filename: '[name].js',
-    libraryTarget: 'commonjs2',
-    path: path.join(__dirname, '../dist/electron')
+    filename: "[name].js",
+    libraryTarget: "commonjs2",
+    path: path.join(__dirname, "../dist/electron"),
   },
-  plugins: [
-    new webpack.NoEmitOnErrorsPlugin()
-  ],
+  plugins: [new webpack.NoEmitOnErrorsPlugin()],
   resolve: {
-    extensions: ['.js', '.json', '.node']
+    extensions: [".js", ".json", ".node"],
   },
-  target: 'electron-main'
-}
+  target: "electron-main",
+};
 
 /**
  * Adjust mainConfig for development settings
