@@ -51,7 +51,15 @@
     },
     "linux": {
       "icon": "build/icons"
-    }
+    },
+        "publish": [
+          {
+            "provider": "github",
+            "owner": "paolaguarasci",
+            "repo": "https://github.com/paolaguarasci/my-awesome-app",
+            "token": "your_access_token"
+          }
+        ]
   },
   "dependencies": {
     "vue": "^2.5.16",

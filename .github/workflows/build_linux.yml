@@ -24,5 +24,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - env: 
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - run: yarn
     - run: yarn run build
