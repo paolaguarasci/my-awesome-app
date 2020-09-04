@@ -47,8 +47,26 @@
       "icon": "build/icons/icon.ico"
     },
     "linux": {
-      "icon": "build/icons"
-    }
+      "icon": "build/icons",
+            "publish": [
+              "github"
+            ],
+            "target": [
+              {
+                "target": "deb",
+                "arch": [
+                  "x64"
+                ]
+              }
+            ]
+    },
+        "publish": [
+          {
+            "provider": "github",
+            "owner": "paolaguarasci",
+            "repo": "my-awesome-app"
+          }
+        ]
   },
   "dependencies": {
     "vue": "^2.5.16",
