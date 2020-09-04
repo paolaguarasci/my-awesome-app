@@ -19,13 +19,15 @@ jobs:
         node-version: [14.x]
 
     steps:
-    - uses: fusion-engineering/setup-git-credentials@v2
-      with:
-        credentials: ${{secrets.GIT_CREDENTIALS}}
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: yarn
-    - run: yarn run build
+      run: yarn
+    
+    - name: "ciao"
+    - uses: fusion-engineering/setup-git-credentials@v2
+      with:
+        GIT_TOKEN: ${{ secrets.PAT}}
+      run: yarn run build
